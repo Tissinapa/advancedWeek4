@@ -1,4 +1,5 @@
 var express = require('express');
+const { response } = require('../app');
 var router = express.Router();
 
 let recipes = {
@@ -19,7 +20,11 @@ router.get("/recipe", (req,res) =>{
 
 })
 router.get('/recipe/:food', (req,res) => {
-  res.send( req.params.food)
+  
+  recipes.name = req.params.food
+  /* res.json(recipes[req.params.name]); */
+  res.send(recipes.name)
+  
   
 });
 
