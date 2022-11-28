@@ -12,7 +12,6 @@ let recipes = {
 router.get('/recipe/:food', (req,res) => {
     res.send(req.params.food)
     
-    
 });
 
 module.exports = router;
