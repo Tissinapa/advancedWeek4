@@ -17,6 +17,7 @@ function initializeCode(){
             .then((recipe) => {
                 console.log(recipe)
                 showRecipe(recipe)
+
             })
     } catch(error){
         error;
@@ -24,12 +25,41 @@ function initializeCode(){
 }
 
 function showRecipe(recipe) {
+    const recipeBody = document.getElementById("bodyId")
     const food = document.createElement("h1")
-    food.innerHTML=recipe.name
-
+    const ingr = document.createElement("h2")
+    const inst = document.createElement("h2")
+    const ingrUl = document.createElement("ul")
     
-    console.log(recipe.name)
-    console.log(recipe.ingredients)
-    console.log(recipe.instructions)
+    const instUl = document.createElement("ul")
+    
+    
+    /* recipe.ingredients.forEach(getList) */
+    
+    ingr.innerHTML="ingredients"
+    inst.innerHTML="instructions"
+    food.innerHTML=recipe.name
+    recipeBody.appendChild(food)
+    recipeBody.appendChild(ingr)
 
+    for(let i= 0; i < recipe.ingredients.length; i++){
+        const ingrLI = document.createElement("li")
+        ingrLI.innerText=recipe.ingredients[i]
+        ingrUl.appendChild(ingrLI)
+        
+    }
+    recipeBody.appendChild(ingrUl)
+    recipeBody.appendChild(inst)
+
+    for(let i= 0; i < recipe.instructions.length; i++){
+        const instLI = document.createElement("li")
+        instLI.innerText=recipe.instructions[i]
+        instUl.appendChild(instLI)
+    }
+    recipeBody.appendChild(instUl)
 }
+
+
+
+
+
