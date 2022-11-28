@@ -12,21 +12,23 @@ let recipes = {
 // "Measure flour", "add oil, eggs and salt", "stir", "boil in water"
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('recipePage');
+
+  
+  res.render('index.pug');
+
 });
 
-/* router.get("/recipe", (req,res) =>{
+router.get("/recipe", (req,res) =>{
 
-  fetch("http://localhost:3000/r")
-  res.render('recipePage')
+  res.render('index.pug')
 
-}) */
+})
 
 router.get('/recipe/:food', (req,res) => {
   
   recipes.name = req.params.food
-  /* res.json(recipes[req.params.name]); */
-  res.send(req.params.food)
+  //res.json(recipes[req.params.name]);
+  res.send(recipes)
   
   
 });

@@ -21,7 +21,7 @@ router.get("/recipe/:food",(req,res)=>{
   
     recipes.name = req.params.food
     /* res.json(recipes[req.params.name]); */
-    res.json(recipes.name)
+    res.json(recipes)
     
     
 });

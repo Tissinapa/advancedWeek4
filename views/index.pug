@@ -1,5 +1,15 @@
-extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
+script(src="/javascripts/fetch.js") 
+body(id="bodyId")
+    input(
+        type="text"
+        id="name-text"
+        )
+    h4 Ingredients
+    textarea(id="ingredients-text")
+    button(type="button" id="add-ingredien") Add ingredient  
+    h4 Instructions
+
+    textarea(id="instruction-text")
+    button(type="button" id="add-instruction") Add ingredient  
+    button(type="submit" id="submit") Submit  
