@@ -29,8 +29,13 @@ router.get('/recipe/:food', (req,res) => {
   recipes.name = req.params.food
   //res.json(recipes[req.params.name]);
   res.send(recipes)
-  
-  
+   
 });
+
+router.post("/recipe/", (req, res)=>{
+  /* recipes.push(req.body) */
+  /* console.log("testing" + JSON.stringify(req.body) + "testing here") */
+  res.send(req.body)
+})
 
 module.exports = router;

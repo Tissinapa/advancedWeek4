@@ -1,13 +1,20 @@
+
+
+const express = require("express");
+const { render } = require("../app");
+const router = express.Router();
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const Recipe = require("../database/Recipes");
+
+
 let recipes = {
     name: 'Pizza', 
-    ingredients: ["Durum flour 4,5dl","eggs 3-4", "olive oil 2-3ts", "salt"],
-    instructions: ["Measure flour", "add oil, eggs and salt", "stir", "boil in water"]
+    ingredients: [],
+    instructions: []
     
 }
-const express = require("express")
-const { render } = require("../app")
-const router = express.Router()
-
+router.use(bodyParser.json());
 
 router.get("/",(req,res)=>{
     res.json(recipes)
@@ -25,7 +32,34 @@ router.get("/recipe/:food",(req,res)=>{
     
     
 });
+router.post("/recipe/", (req, res)=>{
+    Recipe.findOne({recipes: req.body.recipes}, (error, recipe)=> {
 
+        if(error) return next(error);
+        if(!recipe){
+            new Recipe({
+                name: req.body.name,
+                ingredients: req.body.ingredients,
+                instructions: req.body.instructions
+            }).save((error) => {
+                if(error) return next(error)
+                return res.send(req.body)
+            })
+
+            
+
+        } else {
+            return res.status(403).send("Alredy has that recipe")
+        }
+    });
+
+    //recipes.push(req.body)
+    /* console.log("testing" + JSON.stringify(req.body) + "testing here") */
+    //res.send(req.body)
+
+
+})
+ 
 
 
 module.exports = router

@@ -19,6 +19,7 @@ function initializeCode(){
                 showRecipe(recipe)
 
             })
+        getButtonFeatures()
     } catch(error){
         error;
     }
@@ -59,6 +60,45 @@ function showRecipe(recipe) {
     recipeBody.appendChild(instUl)
 }
 
+function getButtonFeatures (){
+    let ingreList = []
+    let instList = []
+
+    const foodName = document.getElementById("name-text")
+    const ingreText = document.getElementById("ingredients-text")
+    const ingreBtn  = document.getElementById("add-ingredien")
+
+    const instText = document.getElementById("instruction-text")
+    const instBtn  = document.getElementById("add-instruction")
+    const submitBtn = document.getElementById("submit")
+
+    ingreBtn.addEventListener("click" , () =>{
+        ingreList.push(ingreText.value)
+        console.log(ingreList)
+    })
+
+    instBtn.addEventListener("click" , () =>{
+        instList.push(instText.value)
+        console.log(instList)
+    })
+
+    submitBtn.addEventListener("click", ()=>{
+        
+        fetch("/recipe/",{
+            method: "post",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({"name": foodName.value, "ingredients": ingreList, "instructions": instList})
+        })
+
+        .then(response => response.json())
+        .then(data => {
+            console.log(JSON.stringify(data))
+
+        })
+    })
+}
 
 
 
