@@ -9,8 +9,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var recipeRouter = require('./routes/recipe');
 
-const { default: mongoose } = require('mongoose');
-const mongoDB = "mongodb://localhost:27017/testdb."
+//const { default: mongoose } = require('mongoose');
+const mongoose = require("mongoose") 
+const mongoDB = "mongodb://localhost:27017/recipedb."
 mongoose.connect(mongoDB)
 mongoose.Promise = Promise
 
