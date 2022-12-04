@@ -11,11 +11,11 @@ var recipeRouter = require('./routes/recipe');
 
 //const { default: mongoose } = require('mongoose');
 const mongoose = require("mongoose") 
-const mongoDB = "mongodb://localhost:27017/recipedb."
+const mongoDB = "mongodb://localhost:27017/testdb"
 mongoose.connect(mongoDB)
 mongoose.Promise = Promise
-
 const db = mongoose.connection
+
 db.on("error", console.error.bind(console, "MongoDB connection error"))
 
 var app = express();

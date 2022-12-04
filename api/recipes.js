@@ -5,7 +5,7 @@ const { render } = require("../app");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const Recipe = require("../database/Recipes");
+const Recipes = require("../database/Recipes");
 
 
 let recipes = {
@@ -32,12 +32,12 @@ router.get("/recipe/:food",(req,res)=>{
     
     
 });
-router.post("/recipe/", (req, res)=>{
-    Recipe.findOne({recipes: req.body.recipes}, (error, recipe)=> {
+router.post("/recipe/", (req, res, next)=>{
+    Recipes.findOne({name: req.body.name}, (error, name)=> {
 
         if(error) return next(error);
-        if(!recipe){
-            new Recipe({
+        if(!name){
+            new Recipes({
                 name: req.body.name,
                 ingredients: req.body.ingredients,
                 instructions: req.body.instructions

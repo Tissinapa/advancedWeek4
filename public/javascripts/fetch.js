@@ -66,9 +66,9 @@ function getButtonFeatures (){
 
     const foodName = document.getElementById("name-text")
     const ingreText = document.getElementById("ingredients-text")
-    const ingreBtn  = document.getElementById("add-ingredien")
+    const ingreBtn  = document.getElementById("add-ingredient")
 
-    const instText = document.getElementById("instruction-text")
+    const instText = document.getElementById("instructions-text")
     const instBtn  = document.getElementById("add-instruction")
     const submitBtn = document.getElementById("submit")
 
