@@ -33,11 +33,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'api')));
 app.use(express.static(path.join(__dirname, 'database')));
  
+
+app.use("/api/recipes.js",require("./api/recipes.js"))
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/recipe', recipeRouter); 
  
-app.use("/api/recipes.js",require("./api/recipes.js"))
+
 //app.use("./frontend/fetch.js", require("./frontend/fetch.js"))
 //app.use("../public/javascripts/fetch.js",require("./public/javascripts/fetch.js"))
 

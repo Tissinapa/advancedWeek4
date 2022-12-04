@@ -84,8 +84,8 @@ function getButtonFeatures (){
 
     submitBtn.addEventListener("click", ()=>{
         
-        fetch("/recipe/",{
-            method: "post",
+        fetch("http://localhost:3000/recipe/",{
+            method: "POST",
             headers: {
                 "Content-type": "application/json"
             },
@@ -97,6 +97,7 @@ function getButtonFeatures (){
             console.log(JSON.stringify(data))
 
         })
+        
     })
 }
 

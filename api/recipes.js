@@ -5,14 +5,13 @@ const { render } = require("../app");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const Recipes = require("../database/Recipes");
+const Recipe = require("../database/Recipes");
 
 
 let recipes = {
     name: 'Pizza', 
     ingredients: [],
     instructions: []
-    
 }
 router.use(bodyParser.json());
 
@@ -33,23 +32,23 @@ router.get("/recipe/:food",(req,res)=>{
     
 });
 router.post("/recipe/", (req, res, next)=>{
-    Recipes.findOne({name: req.body.name}, (error, name)=> {
+    
+    Recipe.findOne({name: req.body.name}, (error, name)=> {
 
         if(error) return next(error);
         if(!name){
-            new Recipes({
+            new Recipe({
                 name: req.body.name,
                 ingredients: req.body.ingredients,
                 instructions: req.body.instructions
             }).save((error) => {
                 if(error) return next(error)
                 return res.send(req.body)
-            })
+            });
 
-            
 
         } else {
-            return res.status(403).send("Alredy has that recipe")
+            return res.status(403).send("Alredy has that recipe");
         }
     });
 

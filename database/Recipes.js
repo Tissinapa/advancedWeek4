@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 let recipeSchema = new Schema({
     name: String,
@@ -7,4 +7,4 @@ let recipeSchema = new Schema({
     instructions: [String]
 })
 
-module.exports = mongoose.model("Recipes", recipeSchema)
+module.exports = mongoose.model("Recipe", recipeSchema)
